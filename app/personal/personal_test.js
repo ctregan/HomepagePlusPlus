@@ -8,9 +8,10 @@ describe('myApp.personal module', function() {
 
     it('should ....', inject(function($controller) {
       //spec body
-      var personalctrl = $controller('PersonalCtrl');
-      expect(personalctrl).toBeDefined();
+        var $scope = {};
+        var personalctrl = $controller('PersonalCtrl', {$scope : $scope });
+        expect(personalctrl).toBeDefined();
+        expect($scope.type).toEqual("Personal");
     }));
-
   });
 });

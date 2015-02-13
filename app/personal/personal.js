@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.personal', ['ngRoute'])
+angular.module('myApp.personal', ['ngRoute', 'myApp.todo'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/personal', {
@@ -9,6 +9,6 @@ angular.module('myApp.personal', ['ngRoute'])
   });
 }])
 
-.controller('PersonalCtrl', [function() {
-
+.controller('PersonalCtrl', ['$scope', function($scope) {
+        $scope.type = "Personal";
 }]);
