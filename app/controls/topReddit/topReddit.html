@@ -1,0 +1,22 @@
+<header id="header">
+    <h4 ng-show="loading">Loading...</h4>
+    <select ng-model="modifier">
+        <option ng-repeat="(key, value) in redditModifiers" value="{{value}}">{{key}}</option>
+    </select>
+    <select ng-model="time">
+        <option ng-repeat="(key, value) in redditTimeModifiers" value="{{value}}">{{key}}</option>
+    </select>
+</header>
+<section id="main" ng-show="topLinks.length" ng-cloak>
+
+    <ul>
+        <li ng-repeat="link in topLinks">
+            <a href="{{link.data.url}}" target="_blank">{{link.data.score}} : {{link.data.title}} : {{link.kind}}</a>
+        </li>
+    </ul>
+
+    <footer>
+        Last Refresh {{lastRefresh}}
+    </footer>
+
+</section>

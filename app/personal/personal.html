@@ -6,5 +6,11 @@
             <div class="moduleHeader">To Do Module</div>
             <todo type="type" />
         </div>
+        <div ng-repeat="sr in subreddits">
+            <div class="col col-md">
+                <div class="moduleHeader">Reddit - {{sr}}</div>
+                <topReddit type="sr"></topReddit>
+            </div>
+        </div>
     </div>
 </div>

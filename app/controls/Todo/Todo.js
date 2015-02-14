@@ -2,10 +2,11 @@ angular.module('myApp.todo', [])
     .controller("todoController", function($scope, $filter, storage){
         var todos = $scope.todos = [];
         $scope.loading = true;
-        storage.get("toDo-" + $scope.namespace).then(function(loadedTDs){
-            $scope.todos = loadedTDs ? loadedTDs : [];
-            $scope.loading = false;
+        storage.get("toDo-" + $scope.namespace).then(function(){
+             $scope.loading = false;
         });
+
+        $scope.todos = storage.dataDictionary["toDo-" + $scope.namespace];
 
         $scope.storage = storage;
         $scope.newTodo = '';
@@ -21,10 +22,9 @@ angular.module('myApp.todo', [])
                 });
         };
 
-
         $scope.$watch('todos', function () {
-            $scope.remainingCount = $filter('filter')(todos, { completed: false }).length;
-            $scope.completedCount = todos.length - $scope.remainingCount;
+            $scope.remainingCount = $filter('filter')($scope.todos, { completed: false }).length;
+            $scope.completedCount = $scope.todos.length - $scope.remainingCount;
             $scope.allChecked = !$scope.remainingCount;
         }, true);
 
@@ -37,7 +37,6 @@ angular.module('myApp.todo', [])
             if (!newTodo.title) {
                 return;
             }
-
 
             $scope.todos.push(newTodo);
             saveTodos();
@@ -113,6 +112,8 @@ angular.module('myApp.todo', [])
             });
 
             angular.copy(notCompleted, $scope.todos);
+
+            saveTodos();
         };
 
         $scope.markAll = function (completed) {
@@ -143,4 +144,4 @@ angular.module('myApp.todo', [])
             controller: 'todoController'
         };
 
-});
+    });

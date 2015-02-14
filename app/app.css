@@ -9,23 +9,20 @@ body{
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
+    margin: .5%;
     background-color: white;
-}
-
-.row {
-    margin-right: -15px;
-    margin-left: -15px;
+    float: left;
 }
 
 .col-md {
-    width: 50%;
+    width: 48%;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
     0 25px 50px 0 rgba(0, 0, 0, 0.1);
     padding: 10px;
 }
 
 .col-sm {
-    width: 25%;
+    width: 24%;
 }
 
 .col-lg {
